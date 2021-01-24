@@ -17,5 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+    - name: Restore dependencies
+      run: dotnet restore "./IPPDotNetDevKitCSV3/Code/IppDotNetDevKitCSV3.sln"
     - name: Build
       run: dotnet msbuild "./IPPDotNetDevKitCSV3/Code/" -property:Configuration=Release
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
