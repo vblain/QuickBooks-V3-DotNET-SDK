@@ -21,5 +21,4 @@ jobs:
       run: dotnet restore "./IPPDotNetDevKitCSV3/Code/IppDotNetDevKitCSV3.sln"
     - name: Build
       run: dotnet msbuild "./IPPDotNetDevKitCSV3/Code/" -property:Configuration=Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    
