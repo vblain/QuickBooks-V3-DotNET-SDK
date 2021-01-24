@@ -54,15 +54,15 @@ namespace Intuit.Ipp.Test
                     throw ex;
                 }
             }
-               
 
-                string output = JsonConvert.SerializeObject(jObj, Formatting.Indented);
-                File.WriteAllText(fileinfo.FullName, output);
-                //tokenDict.Clear();
-                var serviceContext = Initializer.InitializeQBOServiceContextUsingoAuth();
-                return serviceContext;
-            
-            
+
+            string output = JsonConvert.SerializeObject(jObj, Formatting.Indented);
+            File.WriteAllText(fileinfo.FullName, output);
+            //tokenDict.Clear();
+            var serviceContext = Initializer.InitializeQBOServiceContextUsingoAuth();
+            return serviceContext;
+
+
 
         }
         internal static T Add<T>(ServiceContext context, T entity) where T : IEntity
@@ -106,13 +106,9 @@ namespace Intuit.Ipp.Test
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = Add(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
         }
@@ -138,10 +134,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
@@ -166,10 +160,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
@@ -187,17 +179,12 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     List<T> entityResponse = FindByParentId<T>(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
@@ -214,47 +201,37 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = FindById<T>(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
         internal static T Update<T>(ServiceContext context, T entity) where T : IEntity
         {
             try
-            { 
-            //initializing the dataservice object with servicecontext
-            DataService.DataService service = new DataService.DataService(context);
+            {
+                //initializing the dataservice object with servicecontext
+                DataService.DataService service = new DataService.DataService(context);
 
-            //updating the entity
-            T updated = service.Update<T>(entity);
+                //updating the entity
+                T updated = service.Update<T>(entity);
 
-            return updated;
+                return updated;
             }
             catch (IdsException ex)
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = Update<T>(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
@@ -276,17 +253,13 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = UpdateAccountOnTxnsFrance<T>(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
+
             }
         }
 
@@ -321,17 +294,13 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = SparseUpdate<T>(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
+
             }
         }
 
@@ -351,20 +320,16 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = Delete<T>(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
+
             }
         }
-    
+
 
 
         internal static T Void<T>(ServiceContext context, T entity) where T : IEntity
@@ -386,16 +351,9 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = Delete<T>(serviceContext, entity);
                     return entityResponse;
-
-
-                }
-                else
-                {
-                    
                 }
             }
 
@@ -411,7 +369,7 @@ namespace Intuit.Ipp.Test
             entityList.Add(entity);
 
             try
-            { 
+            {
                 IntuitCDCResponse response = service.CDC(entityList, changedSince);
                 if (response.entities.Count == 0)
                 {
@@ -426,17 +384,13 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     List<T> entityResponse = CDC<T>(serviceContext, entity, changedSince);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
+
             }
         }
 
@@ -454,17 +408,13 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = Upload(serviceContext, attachable, stream);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
+
             }
         }
 
@@ -481,17 +431,12 @@ namespace Intuit.Ipp.Test
             {
                 if (ex.Message == "Unauthorized-401")
                 {
-
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     var entityResponse = Download(serviceContext, entity);
                     return entityResponse;
-
-
                 }
-                else
-                {
-                    throw;
-                }
+             
+                throw;
             }
         }
 
@@ -502,8 +447,7 @@ namespace Intuit.Ipp.Test
                 DataService.DataService service = new DataService.DataService(context);
                 List<T> addedList = new List<T>();
                 List<T> newList = new List<T>();
-
-
+                
                 QueryService<T> entityContext = new QueryService<T>(context);
 
                 DataService.Batch batch = service.CreateNewBatch();
@@ -532,10 +476,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
@@ -619,10 +561,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
 
         }
@@ -693,10 +633,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
 
         }
@@ -776,10 +714,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -858,10 +794,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -940,10 +874,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1004,10 +936,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1080,10 +1010,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1159,10 +1087,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1237,10 +1163,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1309,10 +1233,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1368,7 +1290,7 @@ namespace Intuit.Ipp.Test
 
                     var serviceContext = Helper.GetNewTokens_ServiceContext();
                     VoidAsync<T>(serviceContext, entity);
-                  
+
 
 
                 }
@@ -1420,10 +1342,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1472,10 +1392,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
 
         }
@@ -1529,10 +1447,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
@@ -1583,10 +1499,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
 
         }
@@ -1634,10 +1548,8 @@ namespace Intuit.Ipp.Test
 
 
                 }
-                else
-                {
-                    throw ex;
-                }
+
+                throw ex;
             }
         }
 
