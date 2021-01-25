@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;net472;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netstandard2.1;net48;net461</TargetFrameworks>
     <GeneratePackageOnBuild Condition="$(Configuration) == 'Release' ">true</GeneratePackageOnBuild>
     <!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
@@ -26,7 +26,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>https://github.com/intuit/QuickBooks-V3-DotNET-SDK/releases</PackageReleaseNotes>
-    <PackageIcon>E:\Development\GitHub\QuickBooks-V3-DotNET-SDK\IPPDotNetDevKitCSV3\Code\logo.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
@@ -152,14 +152,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\logo.png">
+    <None Include="logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
